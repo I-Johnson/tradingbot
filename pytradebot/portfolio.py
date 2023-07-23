@@ -42,3 +42,42 @@ class Portfolio():
         else: 
             raise TypeError("Positions must be a list of dictionaries")
 
+    def remove_position(self, symbol: str) -> tuple[bool, str]:
+
+        if symbol in self.position:
+            del self.positions[symbol]
+            return(True, "{Symbol} was successfully removed.".format(symbol=symbol))
+        else:
+            return(False, "{Symbol} did not exist in the portfolio.".format(symbol = symbol))
+        
+    
+
+    def in_portfolio(self, symbol: str) -> bool:
+
+        if symbol in self.positions:
+            return True
+        
+        else:
+            return False
+        
+    def is_profitable(self, symbol: str, current_price: float) -> bool:
+        #Grab the purchase price
+        purchase_price = self.positions[symbol]['purchase_price']
+
+        if (purchase_price <= current_price):
+            return True
+        elif (purchase_price > current_price):
+            return False
+        # else: 
+        #     return False 
+        
+    def total_allocation(self):
+        pass
+
+    def risk_exposure(self):
+        pass
+    
+    def total_market_value(self):
+        pass
+
+    
